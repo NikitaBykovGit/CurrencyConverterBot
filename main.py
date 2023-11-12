@@ -31,8 +31,8 @@ def answer_message(message):
         total_base = CurrencyConverter.convert(quote, base, amount)
     except APIException as e:
         bot.reply_to(message, f'Ошибка пользователя\n{e}')
-    # except Exception as e:
-    #     bot.reply_to(message, f'Не удалось обработать команду\n{e}')
+    except Exception as e:
+        bot.reply_to(message, f'Не удалось обработать команду\n{e}')
     else:
         text = f'Цена {amount} {quote} в {base} - {total_base}'
         bot.reply_to(message, text)
